@@ -1,0 +1,75 @@
+<mvc:View
+	controllerName="shamrock.controller.Customer"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:tnt="sap.tnt">
+	<App id="customer-app">
+		<Page title="Customers" id="cust-list-page">
+			<Button
+				icon="sap-icon://add-contact"
+				text="Create customer"
+				press=".onCreateCustomer"
+				type="Emphasized"
+				class="sapUiSmallMargin"/>
+		<List
+			headerText="Customer list"
+			binding="{/customers}"
+			id="cust-list">
+
+			<StandardListItem
+			title="{0/fname}"
+			description="{0/lname}"
+			icon="sap-icon://customer"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Navigation" />
+			
+			<StandardListItem
+			title="{1/fname}"
+			description="{1/lname}"
+			icon="sap-icon://customer"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Navigation" />
+
+		</List>
+
+		</Page>
+		<Page id="cust-details" title="Customer details" showNavButton="true" navButtonPress="onNavBack">
+			<l:BlockLayout background="Light">
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell>
+						<core:Icon color="#1873B4" src="sap-icon://sap-ui5" size="20rem" class="sapUiMediumMarginBottom" width="100%"/>
+						<Title level="H1" titleStyle="H1" text="This is UI5!" width="100%" textAlign="Center"/>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell>
+						<FlexBox items="{/features}" justifyContent="Center" wrap="Wrap" class="sapUiSmallMarginBottom">
+							<tnt:InfoLabel text="{}" class="sapUiSmallMarginTop sapUiSmallMarginEnd"/>
+						</FlexBox>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell>
+						<Panel headerText="Are you ready?" expandable="true">
+							<Switch change=".onChange" customTextOn="yes" customTextOff="no"/>
+							<l:HorizontalLayout id="ready" visible="false" class="sapUiSmallMargin">
+								<Text text="Ok, let's get you started!" class="sapUiTinyMarginEnd"/>
+								<Link text="Learn more" href="https://openui5.hana.ondemand.com/"/>
+							</l:HorizontalLayout>
+						</Panel>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+			</l:BlockLayout>
+		</Page>
+		<Page id="cust-create" title="Customer create" showNavButton="true" navButtonPress="onNavBack">
+			
+		</Page>
+
+	</App>
+</mvc:View>
